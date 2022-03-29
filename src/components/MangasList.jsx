@@ -15,7 +15,7 @@ const MangasList = () => {
   useEffect(() => {
     if (search.trim().length > 0) {
       setFilteredMangas(
-        mangas.filter((manga) => manga.name.toLowerCase().includes(search.toLowerCase()))
+        mangas.filter((manga) => manga.title.toLowerCase().includes(search.toLowerCase()))
       )
     } else {
       setFilteredMangas(mangas);
