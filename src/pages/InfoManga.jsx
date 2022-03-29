@@ -1,19 +1,29 @@
 import '../App.css';
 import Navbar from "../components/Navbar";
-import SearchBar from "../components/SearchBar";
-import MangasList from "../components/MangasList";
+import MangaInfos from "../components/MangaInfos";
 import {Provider} from "react-redux";
 import store from "../states/store";
+import React from 'react';
 
 const InfoManga = () => {
-  return (
-    <div>
-      <Provider store={store}>
-        <Navbar />
-        
-      </Provider>
-    </div>
-  );
+
+    /* const { mangaId } = useParams();
+    console.log(mangaId) */
+
+    
+
+
+    /* const { userId } = useParams();
+    const { Manga } = fetchMangas */
+    return (
+        <div>
+        <Provider store={store}>
+            <Navbar />
+            <MangaInfos />
+
+        </Provider>
+        </div>
+    );
 }
 
 export default InfoManga;
