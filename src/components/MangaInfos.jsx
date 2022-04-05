@@ -4,23 +4,15 @@ import {fetchMangas} from "../states/mangasSlice";
 import { useParams } from 'react-router-dom';
 
 const MangaInfos = () => { 
-    const { search, mangas, loading } = useSelector((store) => store.mangas);
-    const dispatch = useDispatch();
-    const [filteredMangas, setFilteredMangas] = useState(null);
+    const { mangas, loading } = useSelector((store) => store.mangas);
     const { mangaId } = useParams();
-    const { manga } = mangas[mangaId]
-
-
-    /* useEffect(() => {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
         dispatch(fetchMangas());
     }, [])
 
-    useEffect(() => {
-        setFilteredMangas(mangas[mangaId]);
-        console.log(mangas)
-    }, [search, mangas]) */
-
-
+    
     if (loading) {
         return (
             <div className="spinner-border" role="status">
@@ -28,13 +20,16 @@ const MangaInfos = () => {
             </div>
         );
     }
+        
 
     return (
         <div className="mangas-list">
-            {manga.title}
-            <img src={manga.images.jpg.image_url} alt="" />
+            {mangas.find(manga => manga.mal_id === parseInt(mangaId)).title}
+            <img src={mangas.find(manga => manga.mal_id === parseInt(mangaId)).images.jpg.image_url} alt="" />
         </div>
     );
+
+    
 }
 
 export default MangaInfos;
