@@ -23,11 +23,11 @@ const MangasList = () => {
     }
     if (status.length > 0) {
       setFilteredMangas(
-        mangas.filter((manga) => status.includes(manga.status))
+        filteredMangas.filter((manga) => status.includes(manga.status))
       )
     }
     if (order.length > 0) {
-      let arrayForSort = [...mangas]
+      let arrayForSort = [...filteredMangas]
       if (order[order.length-1] === "alphabetical order") {
         setFilteredMangas(arrayForSort.sort((a, b) => (a.title > b.title) ? 1 : -1));
       } else if (order[order.length-1] === "reverse alphabetical order") {
