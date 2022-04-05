@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import MangaItem from "./MangaItem";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMangas} from "../states/mangasSlice";
+import { Checkbox } from 'rsuite';
 
 const MangasList = () => {
-  const { search, mangas, loading, error } = useSelector((store) => store.mangas);
+  const { search, mangas, filters, loading, error } = useSelector((store) => store.mangas);
   const dispatch = useDispatch();
   const [filteredMangas, setFilteredMangas] = useState([]);
 
@@ -17,10 +18,16 @@ const MangasList = () => {
       setFilteredMangas(
         mangas.filter((manga) => manga.title.toLowerCase().includes(search.toLowerCase()))
       )
-    } else {
+    } else if (filters.length > 0) {
+      setFilteredMangas(
+        mangas.filter((manga) => filters.includes(manga.status))
+      )
+    }
+    
+    else {
       setFilteredMangas(mangas);
     }
-  }, [search, mangas])
+  }, [search, filters, mangas])
 
   if (loading) {
     return (

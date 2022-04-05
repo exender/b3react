@@ -25,12 +25,16 @@ export const mangasSlice = createSlice({
   initialState: {
     search: '',
     mangas: [],
+    filters: [],
     loading: true,
     error: null,
   },
   reducers: {
     setSearch: (state, action) => {
       state.search = action.payload;
+    },
+    setFilters: (state, action) => {
+      state.filters = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -50,5 +54,5 @@ export const mangasSlice = createSlice({
   }
 })
 
-export const { setSearch } = mangasSlice.actions;
+export const { setSearch, setFilters } = mangasSlice.actions;
 export default mangasSlice.reducer;

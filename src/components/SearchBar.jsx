@@ -22,7 +22,7 @@ const SearchBar = ({ placeholder }) => {
         />
       </div>
 
-      <div>Vous recherchez : {mangas.search}</div>
+      {/* <div>Vous recherchez : {mangas.search}</div> */}
     </>
   );
 };
