@@ -25,7 +25,8 @@ export const mangasSlice = createSlice({
   initialState: {
     search: '',
     mangas: [],
-    filters: [],
+    status: [],
+    order: [],
     loading: true,
     error: null,
   },
@@ -33,8 +34,11 @@ export const mangasSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload;
     },
-    setFilters: (state, action) => {
-      state.filters = action.payload;
+    setStatus: (state, action) => {
+      state.status = action.payload;
+    },
+    setOrder: (state, action) => {
+      state.order = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -54,5 +58,5 @@ export const mangasSlice = createSlice({
   }
 })
 
-export const { setSearch, setFilters } = mangasSlice.actions;
+export const { setSearch, setStatus, setOrder } = mangasSlice.actions;
 export default mangasSlice.reducer;

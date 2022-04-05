@@ -4,7 +4,8 @@ import SearchBar from "../components/SearchBar";
 import MangasList from "../components/MangasList";
 import {Provider} from "react-redux";
 import store from "../states/store";
-import Flitres from '../components/Filters';
+import FlitreStatus from '../components/FilterStatus';
+import FlitreOrder from '../components/FilterOrder';
 
 const Index = () => {
   return (
@@ -14,7 +15,8 @@ const Index = () => {
 
         <div className="container">
           <SearchBar placeholder="Rechercher par nom..." />
-          <Flitres />
+          <FlitreOrder />
+          <FlitreStatus />
           <MangasList />
         </div>
       </Provider>
