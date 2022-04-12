@@ -21,11 +21,22 @@ const MangasList = () => {
     } else {
       setFilteredMangas(mangas);
     }
+    
+      
+  }, [search, mangas])
+
+  useEffect(() => {
     if (status.length > 0) {
       setFilteredMangas(
         filteredMangas.filter((manga) => status.includes(manga.status))
       )
+    } else {
+      setFilteredMangas(mangas);
     }
+      
+  }, [status, mangas])
+
+  useEffect(() => {
     if (order.length > 0) {
       let arrayForSort = [...filteredMangas]
       if (order[order.length-1] === "alphabetical order") {
@@ -35,9 +46,11 @@ const MangasList = () => {
       } else if (order[order.length-1] === "rank order") {
         setFilteredMangas(arrayForSort.sort((a, b) => (a.rank > b.rank) ? 1 : -1));
       }
+    } else {
+      setFilteredMangas(mangas);
     }
       
-  }, [search, status, order, mangas])
+  }, [order, mangas])
 
   if (loading) {
     return (
