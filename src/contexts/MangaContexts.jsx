@@ -1,16 +1,6 @@
-import React, {createContext, useReducer, useEffect } from "react";
-import { useReducer } from "react";
-import MangaInfos from "../components/MangaInfos";
+import React from "react";
 
+var favoris = localStorage.getItem("manga.id");
 
-const MangaInfosProvider = (props) => {
-    const [ manga, ], useReducer(mangaReducer, []);
-    useEffect (() =>{
-        localStorage.setItem('mangas')
-    }, [manga])
-}
-return (
-    <BookContext.Provider value={{manga, dispatch}}>
-        {props.children}
-    </BookContext.Provider>
-)
+console.log(favoris);
+
