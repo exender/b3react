@@ -14,43 +14,51 @@ const MangasList = () => {
   }, [])
 
   useEffect(() => {
+    setFilteredMangas(mangas);
     if (search.trim().length > 0) {
+      console.log("search")
       setFilteredMangas(
-        mangas.filter((manga) => manga.title.toLowerCase().includes(search.toLowerCase()))
+        (prev) => 
+        prev.filter((manga) => manga.title.toLowerCase().includes(search.toLowerCase()))
       )
-    } else {
+    }
+
+    if (status.length > 0) {
+      console.log("status")
+      setFilteredMangas(
+        (prev) => 
+        prev.filter((manga) => status.includes(manga.status))
+      )
+    }
+
+    if (order.length > 0) {
+      console.log("order")
+      
+      /* let arrayForSort = [...prev] */
+      if (order[order.length-1] === "alphabetical order") {
+        setFilteredMangas(
+          (prev) =>
+          [...prev].sort((a, b) => (a.title > b.title) ? 1 : -1)
+          );
+      } else if (order[order.length-1] === "reverse alphabetical order") {
+        setFilteredMangas(
+          (prev) =>
+          [...prev].sort((a, b) => (a.title < b.title) ? 1 : -1)
+          );
+      } else if (order[order.length-1] === "rank order") {
+        setFilteredMangas(
+          (prev) =>
+          [...prev].sort((a, b) => (a.rank > b.rank) ? 1 : -1)
+          );
+      }
+    } 
+    
+    if (search.trim().length <= 0 && status.length <= 0 && order.length <= 0) {
       setFilteredMangas(mangas);
     }
     
       
-  }, [search, mangas])
-
-  useEffect(() => {
-    if (status.length > 0) {
-      setFilteredMangas(
-        filteredMangas.filter((manga) => status.includes(manga.status))
-      )
-    } else {
-      setFilteredMangas(mangas);
-    }
-      
-  }, [status, mangas])
-
-  useEffect(() => {
-    if (order.length > 0) {
-      let arrayForSort = [...filteredMangas]
-      if (order[order.length-1] === "alphabetical order") {
-        setFilteredMangas(arrayForSort.sort((a, b) => (a.title > b.title) ? 1 : -1));
-      } else if (order[order.length-1] === "reverse alphabetical order") {
-        setFilteredMangas(arrayForSort.sort((a, b) => (a.title < b.title) ? 1 : -1));
-      } else if (order[order.length-1] === "rank order") {
-        setFilteredMangas(arrayForSort.sort((a, b) => (a.rank > b.rank) ? 1 : -1));
-      }
-    } else {
-      setFilteredMangas(mangas);
-    }
-      
-  }, [order, mangas])
+  }, [search, status, order, mangas])
 
   if (loading) {
     return (
