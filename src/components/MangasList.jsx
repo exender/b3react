@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import MangaItem from "./MangaItem";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchMangas} from "../states/mangasSlice";
-import { Checkbox } from 'rsuite';
 
 const MangasList = () => {
   const { search, mangas, status, order, loading, error } = useSelector((store) => store.mangas);

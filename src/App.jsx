@@ -1,21 +1,21 @@
+import React from 'react';
 import './App.css';
-import Navbar from "./components/Navbar";
 import Index from "./pages/Index";
 import InfoManga from "./pages/InfoManga";
-import SearchBar from "./components/SearchBar";
-import MangasList from "./components/MangasList";
-import {Provider} from "react-redux";
-import store from "./states/store";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AnimeList from './components/AnimeList';
+import NotFound from './components/PageNotFound';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>         
-          <Route path="/"element={<Index />} />         
+          <Route path="/" element={<Index />} />
+          <Route path="/anime" element={<AnimeList />} />         
           <Route path="/manga/:mangaId" element={<InfoManga />} />
-       </Routes>     
+          <Route path="*" element={<NotFound />} />
+        </Routes>     
       </BrowserRouter>
     </div>
   );

@@ -1,6 +1,6 @@
 export const fetchMangas = async () => {
   try {
-    const response = await fetch("https://jikan1.p.rapidapi.com/meta/requests/manga/today", {
+    const response = await fetch("https://api.myanimelist.net/v2", {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "jikan1.p.rapidapi.com",
